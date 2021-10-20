@@ -31,7 +31,8 @@ def handler(event, context):
 
     # 降水確率取得
     percent = _get_rainy_percent(driver)
-    if percent > THRESHOLD:
+    print(f"rainy percent: {percent}")
+    if percent >= THRESHOLD:
         # 閾値を超えたらお天気画面キャプチャ
         screenshot_url = _get_yahoo_weather_screenshot(driver)
         message = "今日は雨が降りそうです。\n  12-18時の降水確率: {}％".format(percent)
