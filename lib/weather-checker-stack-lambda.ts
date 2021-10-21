@@ -74,7 +74,7 @@ export class WeatherCheckerStackLambda extends cdk.Stack {
     new events.Rule(this, "rule-weather-checker", {
       // JST で毎日 AM7:30 に定期実行
       // see https://docs.aws.amazon.com/ja_jp/AmazonCloudWatch/latest/events/ScheduledEvents.html#CronExpressions
-      schedule: events.Schedule.cron({ minute: "30", hour: "22", day: "?" }),
+      schedule: events.Schedule.cron({ minute: "30", hour: "22", day: "*" }),
       targets: [
         new targets.LambdaFunction(weatherCheckerFunction, {
           retryAttempts: 3,
